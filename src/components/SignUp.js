@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { ReactSVG } from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 const Background = styled.div`
     width: 100%;
@@ -28,12 +28,20 @@ const SignUpPanel = styled.div`
     }
 `;
 
-const Header = styled.h1`
+const Heading = styled.div`
     display: flex;
     justify-content: center;
-    align-items: baseline; 
-    font-size: 400%;
-    font-weight: bold;
+    align-items: center;
+    background-color:#3cb371;
+    color:white;
+    fill:white;
+    padding:10px;
+    border-radius:10px;
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 200%;
+            font-weight: bold;
+        }
     `;
 
 const InputContainer = styled.div`
@@ -132,10 +140,11 @@ const SignUp = props => {
     return (
         <Background>
             <SignUpPanel>
-                <Header>
-                    {/* <ReactSVG src="flask.svg"/> */}
-                    Sign-Up
-                </Header>
+                <Heading>
+                    <ReactSVG src='flask-lg.svg' />
+                    <h1>Dr. Mary Jane</h1>
+                </Heading>
+                <h2 style={{fontSize: "120%", fontWeight: "bold", marginTop: "10px"}}>Sign Up</h2>
                
                 <form onSubmit={handleSubmit}>
                     <InputContainer>

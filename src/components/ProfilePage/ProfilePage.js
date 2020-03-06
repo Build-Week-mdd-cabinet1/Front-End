@@ -148,7 +148,7 @@ const ProfilePage = () => {
                     <BottomContent>
                         <ProfileNav>
                             <div>
-                                <Link to='/cabinet'>My&nbsp;Cabinet</Link>
+                                <Link to='/profile'>My&nbsp;Cabinet</Link>
                             </div>
                             <div>
                                 <Link to='/profile/findmore'>Find&nbsp;More</Link>

@@ -130,7 +130,7 @@ const SignIn = ({ setHeaderDisplay }) => {
         .post('https://medcabinet1.herokuapp.com/api/auth/login', values)
         .then(response => {
           localStorage.setItem('token', response.data.token);
-          push('/dashboard');
+          push('/profile');
           console.log(response);
           setMatchStatus(true);
           setValueStatus(false);

@@ -107,7 +107,17 @@ const ProfileNav = styled.div`
 const ProfilePage = () => {
   const [currentUser, setCurrentUser] = useState({});
 
+  const setid = localStorage.getItem('CUSER');
+
+  const cuser = JSON.parse(setid);
+
   useEffect(() => {
+    axiosWithAuth()
+      .get('https://medcabinet1.herokuapp.com/api/users/user')
+      .then(response => {
+        console.log(response);
+        localStorage.setItem('userID', response.data.subject);
+      });
     axiosWithAuth()
       .get(
         `https://medcabinet1.herokuapp.com/api/users/${localStorage.getItem(
@@ -120,8 +130,27 @@ const ProfilePage = () => {
       })
       .catch(error => {
         console.log('Error:', error);
+      })
+      .catch(error => {
+        console.log(error);
       });
   }, []);
+
+  //   useEffect(() => {
+  //     axiosWithAuth()
+  //       .get(
+  //         `https://medcabinet1.herokuapp.com/api/users/${localStorage.getItem(
+  //           'userID'
+  //         )}`
+  //       )
+  //       .then(response => {
+  //         console.log(response);
+  //         setCurrentUser(response.data);
+  //       })
+  //       .catch(error => {
+  //         console.log('Error:', error);
+  //       });
+  //   }, []);
 
   console.log(currentUser);
   return (
@@ -131,9 +160,10 @@ const ProfilePage = () => {
       <Background>
         <Profile>
           <div>
+            {console.log(cuser.username)}
             <Welcome>
               Welcome,&nbsp;
-              <span style={{ fontWeight: 'bold' }}>{currentUser.username}</span>
+              <span style={{ fontWeight: 'bold' }}>{cuser.username}</span>
               &nbsp;to Dr. Mary Jane
             </Welcome>
           </div>
@@ -147,7 +177,7 @@ const ProfilePage = () => {
               <div className='infoItems'>Bio:</div>
             </InfoHeader>
             <Info>
-              <div className='infoItems'>{currentUser.username}</div>
+              <div className='infoItems'> {cuser.username}</div>
               <div className='infoItems'>{currentUser.email}</div>
               <div className='infoItems'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
